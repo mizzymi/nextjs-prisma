@@ -1,0 +1,25 @@
+export type CardDetail = {
+    id: string;
+    name: string;
+    images?: { small?: string; large?: string };
+    image?: string;
+    set?: { id?: string; name?: string };
+    illustrator?: string;
+    rarity?: string;
+    category?: string;
+    hp?: number | string;
+    stage?: string;
+    types?: string[];
+    description?: string;
+    effect?: string;
+    attacks?: Array<{ name?: string; text?: string; effect?: string; damage?: string | number; cost?: string[] }>;
+    abilities?: Array<{ name?: string; text?: string; effect?: string; type?: string }>;
+    weaknesses?: Array<{ type?: string; value?: string }>;
+    resistances?: Array<{ type?: string; value?: string }>;
+    retreat?: number;
+    regulationMark?: string;
+    pricing?: { cardmarket?: { trend?: number; low?: number; avg7?: number; avg30?: number } };
+    evolveFrom?: string;
+    evolvesFrom?: string;
+    evolvesTo?: string[];
+};

@@ -3,25 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "prisma generate",
+    "migrate:prod": "prisma migrate deploy",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p",
     "lint": "eslint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.11.1",
     "@neondatabase/serverless": "0.10.4",
     "@prisma/adapter-neon": "6.18.0",
     "@prisma/client": "6.18.0",
     "@prisma/extension-accelerate": "^2.0.2",
     "@tcgdex/sdk": "^2.7.1",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "next": "16.0.1",
+    "next-auth": "^4.24.13",
+    "nodemailer": "^7.0.10",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "sonner": "^2.0.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

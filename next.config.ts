@@ -1,9 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "assets.tcgdex.net" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "assets.tcgdex.net" },
+    ],
   },
 };
-
 export default nextConfig;

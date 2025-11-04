@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -15,11 +14,20 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  createdAt DateTime  @default(now())
-  email     String    @unique
-  name      String?
-  decks     Deck[]
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now())
+  email         String    @unique
+  emailVerified DateTime?
+  passwordHash  String
+  name          String
+  decks         Deck[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  @@unique([identifier, token])
 }
 
 model Deck {
@@ -36,12 +44,15 @@ model Deck {
 }
 
 model Card {
-  id        Int       @id @default(autoincrement())
+  id        String
   name      String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deck      Deck      @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  image     String?
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deck      Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
   deckId    Int
 
+  @@id([deckId, id])
   @@index([deckId])
 }
